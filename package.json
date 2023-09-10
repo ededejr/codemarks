@@ -17,6 +17,10 @@
         "command": "codemarks.helloWorld",
         "title": "Codemarks: Hello World"
       },
+      {
+				"command": "codemarks.createMark",
+				"title": "Codemarks: Mark"
+			},
 			{
 				"command": "codemarks.createNote",
 				"title": "Codemarks: Create Note",
