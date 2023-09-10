@@ -1,6 +1,6 @@
 import { window, commands, ExtensionContext } from 'vscode';
 
-const marks = new Map<string, Mark>();
+export const MarksDB = new Map<string, Mark>();
 
 export function activateMarks(context: ExtensionContext) {
 	context.subscriptions.push(commands.registerCommand('codemarks.createMark', async () => {
@@ -9,11 +9,11 @@ export function activateMarks(context: ExtensionContext) {
       {
         label: 'Create a new mark',
       },
-      ...Array.from(marks.values()).map(mark => ({ label: mark.id, description: mark.description }))
+      ...Array.from(MarksDB.values()).map(mark => ({ label: mark.id, description: mark.description }))
     ];
 		quickPick.onDidChangeSelection(selection => {
 			if (selection[0] && selection[0].label !== 'Create a new mark') {
-        const mark = marks.get(selection[0].description || '') as Mark;
+        const mark = MarksDB.get(selection[0].description || '') as Mark;
         if (mark) {
           insertMarkInEditor(mark).catch(console.error);
         } else {
@@ -37,9 +37,11 @@ export interface Mark {
   comment: string;
 }
 
+export const MarkIdRgx = /@MK([A-Z0-9]+)/g;
+
 async function createMark(key: string) {
-  if (marks.has(key)) {
-    return marks.get(key) as Mark;
+  if (MarksDB.has(key)) {
+    return MarksDB.get(key) as Mark;
   }
 
   const id = `MK${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
@@ -48,11 +50,11 @@ async function createMark(key: string) {
     id,
     key,
     description: key,
-    codeLens: `@${id} ${key}`,
+    codeLens: `Codemark: ${key}`,
     comment: `// @${id}`,
   };
 
-  marks.set(key, mark);
+  MarksDB.set(key, mark);
   return mark;
 }
 
