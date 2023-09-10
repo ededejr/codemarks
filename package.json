@@ -1,0 +1,176 @@
+{
+  "name": "codemarks",
+  "displayName": "codemarks",
+  "description": "bookmark places in your codebase to form cohesive stories for your team",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.82.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+		"commands": [
+      {
+        "command": "codemarks.helloWorld",
+        "title": "Codemarks: Hello World"
+      },
+			{
+				"command": "codemarks.createNote",
+				"title": "Codemarks: Create Note",
+				"enablement": "!commentIsEmpty"
+			},
+			{
+				"command": "codemarks.replyNote",
+				"title": "Codemarks: Reply",
+				"enablement": "!commentIsEmpty"
+			},
+			{
+				"command": "codemarks.editNote",
+				"title": "Codemarks: Edit",
+				"icon": {
+					"dark": "resources/edit_inverse.svg",
+					"light": "resources/edit.svg"
+				}
+			},
+			{
+				"command": "codemarks.deleteNote",
+				"title": "Codemarks: Delete",
+				"icon": {
+					"dark": "resources/close_inverse.svg",
+					"light": "resources/close.svg"
+				}
+			},
+			{
+				"command": "codemarks.deleteNoteComment",
+				"title": "Codemarks: Delete",
+				"icon": {
+					"dark": "resources/close_inverse.svg",
+					"light": "resources/close.svg"
+				}
+			},
+			{
+				"command": "codemarks.saveNote",
+				"title": "Codemarks: Save"
+			},
+			{
+				"command": "codemarks.cancelsaveNote",
+				"title": "Codemarks: Cancel"
+			},
+			{
+				"command": "codemarks.startDraft",
+				"title": "Codemarks: Start Draft",
+				"enablement": "!commentIsEmpty"
+			},
+			{
+				"command": "codemarks.finishDraft",
+				"title": "Codemarks: Finish Draft"
+			},
+			{
+				"command": "codemarks.dispose",
+				"title": "Codemarks: Remove All Notes"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "codemarks.createNote",
+					"when": "false"
+				},
+				{
+					"command": "codemarks.replyNote",
+					"when": "false"
+				},
+				{
+					"command": "codemarks.deleteNote",
+					"when": "false"
+				},
+				{
+					"command": "codemarks.deleteNoteComment",
+					"when": "false"
+				}
+			],
+			"comments/commentThread/title": [
+				{
+					"command": "codemarks.deleteNote",
+					"group": "navigation",
+					"when": "commentController == codemarks && !commentThreadIsEmpty"
+				}
+			],
+			"comments/commentThread/context": [
+				{
+					"command": "codemarks.createNote",
+					"group": "inline",
+					"when": "commentController == codemarks && commentThreadIsEmpty"
+				},
+				{
+					"command": "codemarks.replyNote",
+					"group": "inline",
+					"when": "commentController == codemarks && !commentThreadIsEmpty"
+				},
+				{
+					"command": "codemarks.startDraft",
+					"group": "inline",
+					"when": "commentController == codemarks && commentThreadIsEmpty"
+				},
+				{
+					"command": "codemarks.finishDraft",
+					"group": "inline",
+					"when": "commentController == codemarks && commentThread == draft"
+				}
+			],
+			"comments/comment/title": [
+				{
+					"command": "codemarks.editNote",
+					"group": "group@1",
+					"when": "commentController == codemarks"
+				},
+				{
+					"command": "codemarks.deleteNoteComment",
+					"group": "group@2",
+					"when": "commentController == codemarks && comment == canDelete"
+				}
+			],
+			"comments/comment/context": [
+				{
+					"command": "codemarks.cancelsaveNote",
+					"group": "inline@1",
+					"when": "commentController == codemarks"
+				},
+				{
+					"command": "codemarks.saveNote",
+					"group": "inline@2",
+					"when": "commentController == codemarks"
+				}
+			]
+		}
+	},
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.82.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "eslint": "^8.47.0",
+    "glob": "^10.3.3",
+    "mocha": "^10.2.0",
+    "typescript": "^5.1.6",
+    "ts-loader": "^9.4.4",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "@vscode/test-electron": "^2.3.4"
+  }
+}
