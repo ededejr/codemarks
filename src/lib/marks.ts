@@ -92,10 +92,11 @@ async function showCreateMarkInput() {
 			return null;
 		}
 	});
-	window.showInformationMessage(`Got: ${result}`);
 
   if (result) {
     const mark = await createMark(result);
     await insertMarkInEditor(mark);
+
+    window.showInformationMessage(`Created mark ${mark.id}`);
   }
 }
