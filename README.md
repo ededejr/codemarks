@@ -12,7 +12,7 @@ Codemarks elevates the concept of _code bookmarking_ to a new level. Tag differe
 * Context displayed with CodeLens
 * All data stored locally in workspace
 
-https://github.com/ededejr/codemarks/assets/16638639/f19f7a1a-27bf-4776-af8e-1417c9d297fa
+https://github.com/ededejr/codemarks/assets/16638639/87e01595-fd43-4e3d-8296-2d84bb19bda6
 
 ### extension settings
 
