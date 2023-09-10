@@ -12,6 +12,8 @@ export interface Mark {
 const FOLDER_NAME = '.codemarks';
 const STATE_FILE_NAME = 'state.json';
 
+export const MarkIdRgx = /@MK([A-Z0-9]+)/g;
+
 export const MarksDB = new Proxy(new Map<string, Mark>(), {
   get(target, property, receiver) {
     const key = String(property);

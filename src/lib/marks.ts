@@ -1,6 +1,9 @@
 import { window, commands, ExtensionContext } from 'vscode';
-import { Mark, MarksDB } from './data';
+import { Mark, MarksDB } from './utils';
 
+/**
+ * Active the core features for the extension.
+ */
 export function activateMarks(context: ExtensionContext) {
 	context.subscriptions.push(commands.registerCommand('codemarks.createMark', async () => {
 		const quickPick = window.createQuickPick();
@@ -27,8 +30,6 @@ export function activateMarks(context: ExtensionContext) {
 		quickPick.show();
 	}));
 }
-
-export const MarkIdRgx = /@MK([A-Z0-9]+)/g;
 
 async function createMark(key: string) {
   if (MarksDB.has(key)) {
