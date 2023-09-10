@@ -8,12 +8,18 @@ Codemarks elevates the concept of _code bookmarking_ to a new level. Tag differe
 
 ### features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+* Managed tags for each mark
+* Context displayed with CodeLens
+* Search shortcuts for each tag
+* Easy generation and insertion
 
-![demo](./demo.mp4)
+<video autoplay loop style="padding-top:1em" width="100%" height="100%">
+    <source src="./demo.mp4" type="video/mp4" autoplay >
+    Your browser does not support the video tag.
+</video>
 
 ### extension settings
 
-This extension contributes the following settings:
+**This** extension contributes the following settings:
 
 * `codemarks.enableCodeLens`: Enable/disable CodeLens for this extension.
