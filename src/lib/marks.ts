@@ -1,6 +1,5 @@
 import { window, commands, ExtensionContext } from 'vscode';
-
-export const MarksDB = new Map<string, Mark>();
+import { Mark, MarksDB } from './data';
 
 export function activateMarks(context: ExtensionContext) {
 	context.subscriptions.push(commands.registerCommand('codemarks.createMark', async () => {
@@ -27,14 +26,6 @@ export function activateMarks(context: ExtensionContext) {
 		quickPick.onDidHide(() => quickPick.dispose());
 		quickPick.show();
 	}));
-}
-
-export interface Mark {
-  id: string;
-  key: string;
-  description: string;
-  codeLens: string;
-  comment: string;
 }
 
 export const MarkIdRgx = /@MK([A-Z0-9]+)/g;

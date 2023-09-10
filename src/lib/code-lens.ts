@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
-import { MarksDB, MarkIdRgx } from './marks';
+import { MarksDB } from './data';
+import { MarkIdRgx } from './marks';
 
 export function activateCodeLens(context: vscode.ExtensionContext) {
 	const codelensProvider = new CodelensProvider();
