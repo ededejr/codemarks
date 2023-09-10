@@ -13,10 +13,7 @@ Codemarks elevates the concept of _code bookmarking_ to a new level. Tag differe
 * Search shortcuts for each tag
 * Easy generation and insertion
 
-<video autoplay loop style="padding-top:1em" width="100%" height="100%">
-    <source src="./demo.mp4" type="video/mp4" autoplay >
-    Your browser does not support the video tag.
-</video>
+https://github.com/ededejr/codemarks/assets/16638639/f19f7a1a-27bf-4776-af8e-1417c9d297fa
 
 ### extension settings
 
